@@ -18,22 +18,6 @@
     <meta name="theme-color" content="#0f1a13" />
 
     <style>
-      :root {
-        color-scheme: dark;
-        --bg0: #0b120e;
-        --bg1: #0f1a13;
-        --card: rgba(255, 255, 255, 0.06);
-        --card2: rgba(255, 255, 255, 0.085);
-        --text: rgba(255, 255, 255, 0.92);
-        --muted: rgba(255, 255, 255, 0.72);
-        --muted2: rgba(255, 255, 255, 0.58);
-        --ring: rgba(232, 195, 143, 0.38);
-        --accent: #e8c38f; /* warm latte */
-        --accent2: #84c7a7; /* minty */
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
-        --radius: 20px;
-      }
-
       * {
         box-sizing: border-box;
       }
@@ -45,394 +29,48 @@
 
       body {
         margin: 0;
-        font-family:
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          Segoe UI,
-          Roboto,
-          Helvetica,
-          Arial,
-          "Apple Color Emoji",
-          "Segoe UI Emoji";
-        color: var(--text);
-        background: radial-gradient(
-            1000px 700px at 22% 18%,
-            rgba(232, 195, 143, 0.18),
-            transparent 60%
-          ),
-          radial-gradient(
-            900px 650px at 82% 22%,
-            rgba(132, 199, 167, 0.16),
-            transparent 58%
-          ),
-          radial-gradient(900px 700px at 55% 90%, rgba(255, 255, 255, 0.06), transparent
-                60%),
-          linear-gradient(180deg, var(--bg1), var(--bg0));
+        background: #000;
       }
 
-      .wrap {
-        min-height: 100%;
+      .bg {
+        position: fixed;
+        inset: 0;
+        background-image: url("./sweetbeaan-image.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scale(1.02);
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(900px 700px at 50% 40%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.62));
+      }
+
+      .center {
+        position: relative;
+        min-height: 100vh;
         display: grid;
         place-items: center;
-        padding: 28px 18px;
-      }
-
-      .card {
-        width: min(980px, 100%);
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, var(--card2), var(--card));
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .top {
-        padding: 26px 26px 0 26px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(0, 0, 0, 0.12);
-        color: var(--muted);
-        letter-spacing: 0.02em;
-        font-size: 12px;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: var(--accent);
-        box-shadow: 0 0 0 6px rgba(232, 195, 143, 0.14);
-      }
-
-      .main {
-        padding: 18px 26px 26px 26px;
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 18px;
-      }
-
-      @media (max-width: 860px) {
-        .main {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .hero {
-        padding: 26px;
-        border-radius: calc(var(--radius) - 6px);
-        border: 1px solid rgba(255, 255, 255, 0.11);
-        background: rgba(0, 0, 0, 0.14);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: -120px -120px auto auto;
-        width: 280px;
-        height: 280px;
-        background: radial-gradient(circle at 30% 30%, rgba(232, 195, 143, 0.35), transparent
-              60%);
-        transform: rotate(20deg);
-        filter: blur(0.2px);
-        pointer-events: none;
+        padding: 24px;
       }
 
       .logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 14px;
-      }
-
-      .mark {
-        width: 44px;
-        height: 44px;
-        border-radius: 14px;
-        background: linear-gradient(145deg, rgba(232, 195, 143, 0.24), rgba(132, 199, 167, 0.12));
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        display: grid;
-        place-items: center;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-      }
-
-      .mark svg {
-        width: 22px;
-        height: 22px;
-        fill: var(--accent);
-        opacity: 0.95;
-      }
-
-      h1 {
-        font-size: clamp(36px, 5vw, 56px);
-        line-height: 1.06;
-        margin: 0 0 10px 0;
-        letter-spacing: -0.03em;
-      }
-
-      p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.55;
-        font-size: 16px;
-      }
-
-      .ctaRow {
-        margin-top: 18px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
-      }
-
-      .btn {
-        appearance: none;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        background: rgba(0, 0, 0, 0.12);
-        color: var(--text);
-        padding: 11px 14px;
-        border-radius: 12px;
-        font-weight: 650;
-        letter-spacing: 0.01em;
-        text-decoration: none;
-        display: inline-flex;
-        gap: 10px;
-        align-items: center;
-        transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
-        outline: none;
-      }
-
-      .btn:focus-visible {
-        box-shadow: 0 0 0 4px var(--ring);
-      }
-
-      .btn:hover {
-        transform: translateY(-1px);
-        border-color: rgba(232, 195, 143, 0.34);
-        background: rgba(232, 195, 143, 0.08);
-      }
-
-      .btn.secondary:hover {
-        border-color: rgba(132, 199, 167, 0.35);
-        background: rgba(132, 199, 167, 0.08);
-      }
-
-      .btn small {
-        font-weight: 600;
-        color: var(--muted2);
-      }
-
-      .side {
-        display: grid;
-        gap: 12px;
-      }
-
-      .panel {
-        padding: 18px;
-        border-radius: calc(var(--radius) - 6px);
-        border: 1px solid rgba(255, 255, 255, 0.11);
-        background: rgba(0, 0, 0, 0.12);
-      }
-
-      .panel h2 {
-        margin: 0 0 10px 0;
-        font-size: 14px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.86);
-      }
-
-      .kv {
-        display: grid;
-        gap: 10px;
-      }
-
-      .row {
-        display: flex;
-        gap: 10px;
-        align-items: baseline;
-        justify-content: space-between;
-      }
-
-      .row span:first-child {
-        color: var(--muted2);
-        font-size: 13px;
-      }
-
-      .row span:last-child {
-        color: var(--text);
-        font-weight: 600;
-        font-size: 14px;
-        text-align: right;
-      }
-
-      .footer {
-        padding: 16px 26px 22px 26px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        flex-wrap: wrap;
-        color: var(--muted2);
-        font-size: 13px;
-      }
-
-      .footer a {
-        color: var(--muted);
-        text-decoration: none;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.26);
-      }
-
-      .footer a:hover {
-        color: var(--text);
-        border-bottom-color: rgba(232, 195, 143, 0.6);
-      }
-
-      .srOnly {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-        white-space: nowrap;
+        width: min(560px, 80vw);
+        height: auto;
+        filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
+        user-select: none;
+        -webkit-user-drag: none;
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <main class="card" role="main">
-        <div class="top">
-          <div class="badge" aria-label="Site status">
-            <span class="dot" aria-hidden="true"></span>
-            Coming soon
-          </div>
-          <div class="badge">
-            <span aria-hidden="true">☕</span>
-            Sweet Bean Cafe
-          </div>
-        </div>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true"></div>
 
-        <section class="main">
-          <div class="hero">
-            <div class="logo">
-              <div class="mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    d="M18 8h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8h14Zm1 2h-1v4h1a1 1 0 1 0 0-4ZM6 5a1 1 0 0 1 1 1c0 .7-.3 1.2-.6 1.6-.2.3-.4.5-.4.9a1 1 0 1 1-2 0c0-.7.3-1.2.6-1.6.2-.3.4-.5.4-.9a1 1 0 0 1 1-1Zm5 0a1 1 0 0 1 1 1c0 .7-.3 1.2-.6 1.6-.2.3-.4.5-.4.9a1 1 0 1 1-2 0c0-.7.3-1.2.6-1.6.2-.3.4-.5.4-.9a1 1 0 0 1 1-1Zm5 0a1 1 0 0 1 1 1c0 .7-.3 1.2-.6 1.6-.2.3-.4.5-.4.9a1 1 0 1 1-2 0c0-.7.3-1.2.6-1.6.2-.3.4-.5.4-.9a1 1 0 0 1 1-1Z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <div class="srOnly">Sweet Bean</div>
-              </div>
-            </div>
-
-            <h1>Sweet Bean</h1>
-            <p>
-              We’re getting the espresso machine warmed up and the menu dialed in. Our website is
-              on the way — in the meantime, you can reach us below.
-            </p>
-
-            <div class="ctaRow">
-              <a class="btn" href="mailto:hello@sweetbean.cafe" aria-label="Email Sweet Bean">
-                Email us
-                <small>hello@sweetbean.cafe</small>
-              </a>
-              <a class="btn secondary" href="tel:+10000000000" aria-label="Call Sweet Bean">
-                Call
-                <small>+1 (000) 000-0000</small>
-              </a>
-              <a
-                class="btn"
-                href="#location"
-                aria-label="View location and opening hours"
-                title="Location & hours"
-              >
-                Location & hours
-              </a>
-            </div>
-          </div>
-
-          <aside class="side" aria-label="Cafe details">
-            <div class="panel" id="location">
-              <h2>Location</h2>
-              <div class="kv">
-                <div class="row">
-                  <span>Address</span>
-                  <span>123 Bean Street, Your City</span>
-                </div>
-                <div class="row">
-                  <span>Directions</span>
-                  <span>Near the town square</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel">
-              <h2>Hours</h2>
-              <div class="kv" aria-label="Opening hours">
-                <div class="row">
-                  <span>Mon–Fri</span>
-                  <span>7:00am – 3:00pm</span>
-                </div>
-                <div class="row">
-                  <span>Sat</span>
-                  <span>8:00am – 3:00pm</span>
-                </div>
-                <div class="row">
-                  <span>Sun</span>
-                  <span>Closed</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel">
-              <h2>Updates</h2>
-              <p style="margin-top: -2px">
-                Follow along for opening details and menu previews.
-              </p>
-              <div class="ctaRow" style="margin-top: 12px">
-                <a class="btn secondary" href="#" aria-label="Instagram link placeholder">
-                  Instagram
-                  <small>@sweetbean</small>
-                </a>
-                <a class="btn" href="#" aria-label="Facebook link placeholder">
-                  Facebook
-                  <small>Sweet Bean</small>
-                </a>
-              </div>
-            </div>
-          </aside>
-        </section>
-
-        <footer class="footer" role="contentinfo">
-          <div>© <span id="year"></span> Sweet Bean. All rights reserved.</div>
-          <div>
-            Want changes? Edit <a href="index.html">index.html</a>.
-          </div>
-        </footer>
-      </main>
-    </div>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <main class="center" role="main" aria-label="Sweet Bean holding page">
+      <img class="logo" src="./sweetbean01-Wht.png" alt="Sweet Bean logo" />
+    </main>
   </body>
 </html>
